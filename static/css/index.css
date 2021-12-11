@@ -18,4 +18,5 @@ body {
     padding: 10px;
     border-radius: 25px;
     background: #2E9CCA;
+    word-wrap: break-word;
 }

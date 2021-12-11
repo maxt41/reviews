@@ -35,17 +35,21 @@
                         <div class="modal-dialog" role="document">
                             <div class="modal-content" id="newPost">
                                 <div class="modal-header">
-                                <h5 class="modal-title">New post</h5>
+                                <h5 class="modal-title font-weight-bold">New post</h5>
                                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                                 </div>
                                 <div class="modal-body">
                                     <form action="/post" method="POST">
                                         <div class="mb-3">
-                                            <input type="text" name="reviewTitle" class="form-control" placeholder="Review title">
+                                            <input type="text" name="reviewTitle" class="form-control" maxlength="280" placeholder="Review title">
                                         </div>
                                         <div class="mb-3">
-                                            <input type="text" name="reviewBody" class="form-control" placeholder="Review body">
+                                            <input type="text" name="reviewBody" class="form-control" maxlength="280" placeholder="Review body">
                                         </div>
+                                        <div class="mb-3">
+                                            <p class="font-weight-light">Character limit 280</p>
+                                        </div>
+
                                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
                                         <button type="submit" class="btn btn-primary float-right">Post</button>
                                     </form>
