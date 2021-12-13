@@ -1,9 +1,8 @@
 const express = require("express");
 const router = express.Router();
 
-let reviews = [{title: "Title example", body: "Body example"},
-               {title: "Title example 2", body: "Body example 2"},
-               {title: "", body: ""}]
+let reviews = [{title: "Lion King", body: "A movie about a lion cub."},
+               {title: "Cat in the hat", body: "A movie about a cat in a hat."}]
 
 router.get("/", (req, res) => {
     res.render("index.ejs", {reviews})
@@ -11,10 +10,14 @@ router.get("/", (req, res) => {
 
 router.get("/:id", (req, res) => {
     const id = req.params.id;
-    try {
-        res.json(reviews[id].title)
-    } catch {
-        res.json(id)
+    if (reviews[id]) {
+        try {
+            res.render("index_single.ejs", {reviews: reviews[id]})
+        } catch {
+            res.json(id)    
+        }
+    } else {
+        res.redirect("/")
     }
         
 });
@@ -22,7 +25,9 @@ router.get("/:id", (req, res) => {
 router.post("/post", (req, res) => {
     title = req.body.reviewTitle
     body = req.body.reviewBody
-    reviews.push({title:title, body:body})
+    if (title && body){
+        reviews.push({title:title, body:body})
+    }
     
     res.redirect("/")
 });
